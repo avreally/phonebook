@@ -32,6 +32,13 @@ const Stats = (props) => {
 }
 
 const Statistics = (props) => {
+  if (props.totalAll === 0) {
+    return (
+      <div>
+        <p>No feedback given</p>
+      </div>
+    )
+  }
   return (
     <div>
       <Stats text={labelGood} total={props.totalGood}/>
