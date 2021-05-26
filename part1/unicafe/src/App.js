@@ -25,9 +25,10 @@ const Button = ({ handleClick, text }) => {
 
 const Stats = ({ text, total }) => {
   return (
-    <div>
-      <p>{text} {total}</p>
-    </div>
+    <tr>
+      <td>{text}</td>
+      <td>{total}</td>
+    </tr>
   )
 }
 
@@ -40,14 +41,14 @@ const Statistics = ({ totalAll, totalGood, totalNeutral, totalBad, average, posi
     )
   }
   return (
-    <div>
+    <table>
       <Stats text={labelGood} total={totalGood}/>
       <Stats text={labelNeutral} total={totalNeutral}/>
       <Stats text={labelBad} total={totalBad}/>
       <Stats text={labelAll} total={totalAll}/>
       <Stats text={labelAverage} total={average}/>
       <Stats text={labelPositive} total={positive}/>
-    </div>
+    </table>
   )
 }
 
