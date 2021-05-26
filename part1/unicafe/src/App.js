@@ -7,32 +7,32 @@ const labelAll = 'all'
 const labelAverage = 'average'
 const labelPositive = 'positive'
 
-const Header = (props) => {
+const Header = ({ text }) => {
   return (
     <div>
-      <h1>{props.text}</h1>
+      <h1>{text}</h1>
     </div>
   )
 }
 
-const Button = (props) => {
+const Button = ({ handleClick, text }) => {
   return (
-    <button onClick={props.handleClick} >
-      {props.text}
+    <button onClick={handleClick}>
+      {text}
     </button>
   )
 }
 
-const Stats = (props) => {
+const Stats = ({ text, total }) => {
   return (
     <div>
-      <p>{props.text} {props.total}</p>
+      <p>{text} {total}</p>
     </div>
   )
 }
 
-const Statistics = (props) => {
-  if (props.totalAll === 0) {
+const Statistics = ({ totalAll, totalGood, totalNeutral, totalBad, average, positive }) => {
+  if (totalAll === 0) {
     return (
       <div>
         <p>No feedback given</p>
@@ -41,12 +41,12 @@ const Statistics = (props) => {
   }
   return (
     <div>
-      <Stats text={labelGood} total={props.totalGood}/>
-      <Stats text={labelNeutral} total={props.totalNeutral}/>
-      <Stats text={labelBad} total={props.totalBad}/>
-      <Stats text={labelAll} total={props.totalAll}/>
-      <Stats text={labelAverage} total={props.average}/>
-      <Stats text={labelPositive} total={props.positive}/>
+      <Stats text={labelGood} total={totalGood}/>
+      <Stats text={labelNeutral} total={totalNeutral}/>
+      <Stats text={labelBad} total={totalBad}/>
+      <Stats text={labelAll} total={totalAll}/>
+      <Stats text={labelAverage} total={average}/>
+      <Stats text={labelPositive} total={positive}/>
     </div>
   )
 }
