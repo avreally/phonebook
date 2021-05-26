@@ -31,7 +31,7 @@ const Stats = (props) => {
   )
 }
 
-const Details = (props) => {
+const Statistics = (props) => {
   return (
     <div>
       <Stats text={labelGood} total={props.totalGood}/>
@@ -73,7 +73,7 @@ const App = () => {
         text={labelBad}
       />
       <Header text='statistics' />
-      <Details 
+      <Statistics 
         totalGood={good} 
         totalNeutral={neutral} 
         totalBad={bad}
