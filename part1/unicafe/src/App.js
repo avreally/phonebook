@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
 
+const labelGood = 'good'
+const labelNeutral = 'neutral'
+const labelBad = 'bad'
+const labelAll = 'all'
+const labelAverage = 'average'
+const labelPositive = 'positive'
+
 const Header = (props) => {
   return (
     <div>
@@ -27,9 +34,12 @@ const Stats = (props) => {
 const Details = (props) => {
   return (
     <div>
-      <Stats text={props.labelGood} total={props.totalGood}/>
-      <Stats text={props.labelNeutral} total={props.totalNeutral}/>
-      <Stats text={props.labelBad} total={props.totalBad}/>
+      <Stats text={labelGood} total={props.totalGood}/>
+      <Stats text={labelNeutral} total={props.totalNeutral}/>
+      <Stats text={labelBad} total={props.totalBad}/>
+      <Stats text={labelAll} total={props.totalAll}/>
+      <Stats text={labelAverage} total={props.average}/>
+      <Stats text={labelPositive} total={props.positive}/>
     </div>
   )
 }
@@ -40,9 +50,9 @@ const App = () => {
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
 
-  const labelGood = 'good'
-  const labelNeutral = 'neutral'
-  const labelBad = 'bad'
+  const totalAll = good + neutral + bad
+  const average = (good - bad) / totalAll
+  const positive = good / totalAll * 100 + ' %'
 
   const feedbackGood = () => setGood(good + 1)
   const feedbackNeutral = () => setNeutral(neutral + 1)
@@ -64,12 +74,13 @@ const App = () => {
       />
       <Header text='statistics' />
       <Details 
-        labelGood={labelGood}
-        labelNeutral={labelNeutral}
-        labelBad={labelBad}
         totalGood={good} 
         totalNeutral={neutral} 
-        totalBad={bad}/>
+        totalBad={bad}
+        totalAll={totalAll}
+        average={average}
+        positive={positive}
+        />
     </div>
   )
 }
