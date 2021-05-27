@@ -1,32 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-const Header = (props) => {
+const Header = ({ text }) => {
   return (
     <div>
-      <h1>{props.text}</h1>
+      <h1>{text}</h1>
     </div>
   )
 }
 
-const Button = (props) => {
+const Button = ({ handleClick, text }) => {
   return (
-    <button onClick={props.handleClick}>
-      {props.text}
+    <button onClick={handleClick}>
+      {text}
     </button>
   )
 }
 
-const VotesCount = (props) => {
-  if (props.votes === 1) {
+const VotesCount = ({ votes }) => {
+  if (votes === 1) {
     return (
       <div>
-        has {props.votes} vote
+        has {votes} vote
       </div>
     )
   }
   return (
       <div>
-          has {props.votes} votes
+          has {votes} votes
       </div>
   )
 }
@@ -34,10 +34,6 @@ const VotesCount = (props) => {
 const App = () => {
   const [selected, setSelected] = useState(0)
   const [allVotes, addVote] = useState(new Array(6).fill(0))
-
-  // console.log(`Array is ${allVotes}`);
-  // console.log(allVotes);
-  // console.log(allVotes[0]);
 
   const anecdotes = [
     'If it hurts, do it more often',
@@ -52,38 +48,36 @@ const App = () => {
     return Math.floor(Math.random() * max);
   }
 
+  // event handler function for "next anecdote" button
   const nextAnecdote = () => setSelected(selected * 0 + randomNumber(anecdotes.length))
-  // console.log(`Selected is ${selected}`) 
 
+  // event handler function for "vote" button
   const vote = () => {
     const copy = [...allVotes]
-    // console.log(`First element of array ${copy[0]}`);
-    // console.log(copy[selected]);
     copy[selected] += 1
-    // console.log(`Array copy is ${copy}`);
     addVote(copy)
   }
-  
-  // console.log(randomNumber(anecdotes.length));
-  // const votes = new Array(6).fill(0)
-  // console.log(votes);
+
+  // finding index of anecdote with maximum votes
+  const maxVotes = allVotes.indexOf(Math.max(...allVotes))
 
   return (
     <div>
-      <Header text='Anecdote of the day' />
+      <Header text="Anecdote of the day" />
       {anecdotes[selected]}
       <VotesCount votes={allVotes[selected]} />
       <Button
-        text='vote'
+        text="vote"
         handleClick={vote} 
       />
       <Button 
-        text='next anecdote'
+        text="next anecdote"
         handleClick={nextAnecdote}
        />
-      <Header text='Anecdote with most votes' />
+      <Header text="Anecdote with most votes" />
+      {anecdotes[maxVotes]}
     </div>
   )
 }
 
-export default App
+export default App;
