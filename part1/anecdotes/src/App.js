@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 const Header = ({ text }) => {
   return (
@@ -45,7 +45,7 @@ const App = () => {
   ]
 
   const randomNumber = (max) => {
-    return Math.floor(Math.random() * max);
+    return Math.floor(Math.random() * max)
   }
 
   // event handler function for "next anecdote" button
@@ -80,4 +80,4 @@ const App = () => {
   )
 }
 
-export default App;
+export default App
