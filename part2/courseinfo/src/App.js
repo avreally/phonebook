@@ -6,18 +6,16 @@ const MainHeading = ({ mainHeading }) => {
   )
 }
 
-// const Content = ({ coursesContent }) => {
-//   // const result = courses.parts.map(part =>
-//   //   <p key={part.id}>{part.name} {part.exercises}</p>)
-//   // const courseContent = courses.map(course =>
-//   //   <p key={course.id}>{course.parts}</p>)
-//   return (
-//     <div>
-//       {coursesContent}
-//       {/* <Part coursesContent={coursesContent} /> */}
-//     </div>
-//   )
-// }
+const Content = ({ course }) => {
+  return (
+      <div>
+      <Header courseName={course.name} />
+      <div>{course.parts.map(part =>
+        <p key={part.id}>{part.name} {part.exercises}</p>)}</div>
+      <Total courses={course.parts} />
+    </div>
+  )
+}
 
 const Total = ({ courses }) => {
   let initialValue = 0
@@ -25,7 +23,7 @@ const Total = ({ courses }) => {
     (accumulator, currentValue) => accumulator + currentValue.exercises, initialValue
     )
   return(
-    <p><b>Number of exercises {sum}</b></p>
+    <p><b>total of {sum} exercises</b></p>
   ) 
 }
 
@@ -39,19 +37,11 @@ const Header = ({ courseName }) => {
 
 const Course = ({ courses }) => {
   const coursesContent = courses.map(course =>
-    <div key={course.id}>
-      <Header courseName={course.name} />
-      <div>{course.parts.map(part =>
-        <p key={part.id}>{part.name} {part.exercises}</p>)}</div>
-      <Total courses={course.parts} />
-    </div>
+    <Content key={course.id} course={course} />
   )
-  // const courseName = courses.map(course =>
-  //   <p key={course.id}>{course.name}</p>)
   return (
     <div>
       {coursesContent}
-      {/* <Content coursesContent={coursesContent} /> */}
     </div>
   )
 }
