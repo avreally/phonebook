@@ -9,22 +9,56 @@ const FindCountries = ({ findCountry, handleFindChange }) => {
   );
 };
 
-const OneCountry = ({ country }) => {
-  // console.log("OneCountry props are", country)
+const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+
+const Weather = ({ capital }) => {
+  const [showWeather, setShowWeather] = useState();
+
+  useEffect(() => {
+    console.log("weather effect");
+    axios
+      .get(
+        `http://api.weatherstack.com/current?access_key=${API_KEY}&query=${capital}`
+      )
+      .then((response) => {
+        console.log("weather promise fulfilled");
+        setShowWeather(response.data);
+      });
+  }, [capital]);
+
+  if (!showWeather) {
+    return null;
+  }
+
+  const weather = showWeather.current;
+  return (
+    <div>
+      <h4>Weather in {capital}</h4>
+      <div>
+        <b>temperature:</b> {weather.temperature} Celcius
+      </div>
+      <img src={weather.weather_icons} alt="weather icon" width="100" />
+      <div>
+        <b>wind:</b> {weather.wind_speed} km/h direction {weather.wind_dir}
+      </div>
+    </div>
+  );
+};
+
+const OneCountry = ({ country, capital }) => {
   return (
     <div>
       <h3>{country.name}</h3>
-      <div>Capital: {country.capital}</div>
+      <div>Capital: {capital}</div>
       <div>Population: {country.population}</div>
-      <p>
-        <b>Languages: </b>
-      </p>
+      <h4>Spoken languages:</h4>
       <p>
         {country.languages.map((language) => (
           <li key={language.iso639_1}>{language.name}</li>
         ))}
       </p>
       <img src={country.flag} alt="flag" width="100" />
+      <Weather capital={capital} />
     </div>
   );
 };
@@ -48,7 +82,12 @@ const SearchResult = ({ filteredCountries, findCountry, onShowClick }) => {
       </div>
     );
   } else if (filteredCountries.length === 1) {
-    return <OneCountry country={filteredCountries[0]} />;
+    return (
+      <OneCountry
+        country={filteredCountries[0]}
+        capital={filteredCountries[0].capital}
+      />
+    );
   }
 };
 
@@ -56,11 +95,9 @@ const App = () => {
   const [countries, setCountries] = useState([]);
   const [findCountry, setFindCountry] = useState("");
   const [selectedCountry, setSelectedCountry] = useState();
-  console.log("findCountry is ", findCountry);
 
   const handleFindChange = (event) => {
     setSelectedCountry(undefined);
-    console.log(event.target.value);
     setFindCountry(event.target.value);
   };
 
@@ -71,7 +108,6 @@ const App = () => {
   };
 
   const filteredCountries = filterItems(countries, findCountry);
-  console.log("filteredCountries are", filteredCountries);
 
   const handleShowClick = (country) => {
     setSelectedCountry(country);
@@ -92,7 +128,10 @@ const App = () => {
         findCountry={findCountry}
       />
       {selectedCountry ? (
-        <OneCountry country={selectedCountry} />
+        <OneCountry
+          country={selectedCountry}
+          capital={selectedCountry.capital}
+        />
       ) : (
         <SearchResult
           filteredCountries={filteredCountries}
