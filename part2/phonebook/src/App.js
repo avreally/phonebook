@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import personService from "./services/persons";
-// import axios from "axios";
 
 const Filter = ({ newFilter, handleFilter }) => {
   return (
@@ -32,32 +31,38 @@ const Form = ({
   );
 };
 
-const Person = ({ persons }) => {
+const Person = ({ person, handleDelete }) => {
   return (
     <div>
-      {persons.map((person) => (
-        <p key={person.name}>
-          {person.name} {person.number}
+      {
+        <p>
+          {person.name} {person.number}{" "}
+          <button onClick={() => handleDelete(person)} name={person.name}>
+            delete
+          </button>
         </p>
-      ))}
+      }
     </div>
   );
 };
 
-const Persons = ({ persons, newFilter }) => {
+const Persons = ({ persons, newFilter, handleDelete }) => {
   const filterItems = (arr, query) => {
     return arr.filter((el) =>
       el.name.toLowerCase().includes(query.toLowerCase())
     );
   };
-
-  const filteredPersons = filterItems(persons, newFilter);
+  let resultPersons;
 
   if (newFilter !== "") {
-    return <Person persons={filteredPersons} />;
+    resultPersons = filterItems(persons, newFilter);
   } else {
-    return <Person persons={persons} />;
+    resultPersons = persons;
   }
+
+  return resultPersons.map((person) => (
+    <Person key={person.id} person={person} handleDelete={handleDelete} />
+  ));
 };
 
 const App = () => {
@@ -88,7 +93,6 @@ const App = () => {
         name: newName,
         number: newNumber,
       };
-
       personService.create(newPerson).then((returnedPerson) => {
         setPersons(persons.concat(returnedPerson));
         setNewName("");
@@ -109,6 +113,20 @@ const App = () => {
     setNewFilter(event.target.value);
   };
 
+  const handleDelete = (person) => {
+    let id = person.id;
+    let name = person.name;
+
+    if (window.confirm(`Delete ${name}?`)) {
+      personService.deletePerson(id).then(() => {
+        setPersons(persons.filter((person) => person.id !== id));
+        console.log("deleted");
+      });
+    } else {
+      console.log("the user canceled");
+    }
+  };
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -122,7 +140,11 @@ const App = () => {
         handleNumberChange={handleNumberChange}
       />
       <h2>Numbers</h2>
-      <Persons persons={persons} newFilter={newFilter} />
+      <Persons
+        persons={persons}
+        newFilter={newFilter}
+        handleDelete={handleDelete}
+      />
     </div>
   );
 };
