@@ -85,9 +85,30 @@ const App = () => {
     const findName = persons.find((person) => person.name === newName);
 
     if (findName !== undefined) {
-      window.alert(`${findName.name} is already added to phonebook`);
-      setNewName("");
-      setNewNumber("");
+      if (
+        window.confirm(
+          `${findName.name} is already added to phonebook, replace the old number with a new one?`
+        )
+      ) {
+        const person = persons.find((p) => p.id === findName.id);
+        const changedPerson = { ...person, number: newNumber };
+
+        personService
+          .update(findName.id, changedPerson)
+          .then((returnedPerson) => {
+            setPersons(
+              persons.map((person) =>
+                person.id !== findName.id ? person : returnedPerson
+              )
+            );
+          });
+        setNewName("");
+        setNewNumber("");
+      } else {
+        console.log("the user cancelled changing number");
+        setNewName("");
+        setNewNumber("");
+      }
     } else {
       const newPerson = {
         name: newName,
@@ -114,8 +135,8 @@ const App = () => {
   };
 
   const handleDelete = (person) => {
-    let id = person.id;
-    let name = person.name;
+    const id = person.id;
+    const name = person.name;
 
     if (window.confirm(`Delete ${name}?`)) {
       personService.deletePerson(id).then(() => {
