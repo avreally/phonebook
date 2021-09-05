@@ -1,3 +1,31 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.filter, .form, .name, .number {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+}
+
+.contacts, .right-sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.person {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  margin: 0;
+}
+
 .notification {
   color: darkgreen;
   background: rgb(158, 224, 199);

@@ -20,8 +20,8 @@ const Error = ({ message }) => {
 
 const Filter = ({ newFilter, handleFilter }) => {
   return (
-    <div>
-      filter shown with <input value={newFilter} onChange={handleFilter} />
+    <div className="filter">
+      Name: <input value={newFilter} onChange={handleFilter} />
     </div>
   );
 };
@@ -34,12 +34,12 @@ const Form = ({
   handleNumberChange,
 }) => {
   return (
-    <form onSubmit={addName}>
-      <div>
-        name: <input value={newName} onChange={handleNameChange} />
+    <form onSubmit={addName} className="form">
+      <div className="name">
+        Name: <input value={newName} onChange={handleNameChange} />
       </div>
-      <div>
-        number: <input value={newNumber} onChange={handleNumberChange} />
+      <div className="number">
+        Number: <input value={newNumber} onChange={handleNumberChange} />
       </div>
       <div>
         <button type="submit">add</button>
@@ -52,8 +52,13 @@ const Person = ({ person, handleDelete }) => {
   return (
     <div>
       {
-        <p>
-          {person.name} {person.number}{" "}
+        <p className="person">
+          <div>
+            {person.name}
+          </div>
+          <div>
+            {person.number}{" "}
+          </div>
           <button onClick={() => handleDelete(person)} name={person.name}>
             delete
           </button>
@@ -186,25 +191,30 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h2>Phonebook</h2>
+    <div className="container">
+      {/*<h2>Phonebook</h2>*/}
       <Notification message={notificationMessage} />
       <Error message={errorMessage} />
-      <Filter newFilter={newFilter} handleFilter={handleFilter} />
-      <h2>Add a new</h2>
-      <Form
-        addName={addName}
-        newName={newName}
-        handleNameChange={handleNameChange}
-        newNumber={newNumber}
-        handleNumberChange={handleNumberChange}
-      />
-      <h2>Numbers</h2>
-      <Persons
-        persons={persons}
-        newFilter={newFilter}
-        handleDelete={handleDelete}
-      />
+      <div className="contacts">
+        <h2>Contacts</h2>
+        <Persons
+            persons={persons}
+            newFilter={newFilter}
+            handleDelete={handleDelete}
+        />
+      </div>
+      <div className="right-sidebar">
+        <h3>Filter contacts</h3>
+        <Filter newFilter={newFilter} handleFilter={handleFilter} />
+        <h3>Add new contact</h3>
+        <Form
+            addName={addName}
+            newName={newName}
+            handleNameChange={handleNameChange}
+            newNumber={newNumber}
+            handleNumberChange={handleNumberChange}
+        />
+      </div>
     </div>
   );
 };
