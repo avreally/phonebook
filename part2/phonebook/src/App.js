@@ -56,11 +56,9 @@ const Person = ({ person, handleDelete }) => {
       {
         <div className="person-container">
           <div className="person">
-            <IconContext.Provider value={{ size: "3em" }}>
-              <div className="person-avatar">
-                <FaUserCircle />
-              </div>
-            </IconContext.Provider>
+            <div className="person-avatar">
+              <FaUserCircle />
+            </div>
             <div className="person-info">
               <div>{person.name}</div>
               <div>{person.number} </div>
@@ -73,7 +71,6 @@ const Person = ({ person, handleDelete }) => {
             name={person.name}
           >
             <FaTrashAlt />
-            {/*delete*/}
           </button>
         </div>
       }
@@ -205,10 +202,7 @@ const App = () => {
 
   return (
     <div>
-      <Notification message={notificationMessage} />
-      <Error message={errorMessage} />
       <div className="container">
-        {/*<h2>Phonebook</h2>*/}
         <div className="contacts">
           <h2>Contacts</h2>
           <Filter newFilter={newFilter} handleFilter={handleFilter} />
@@ -219,7 +213,6 @@ const App = () => {
           />
         </div>
         <div className="add-contact">
-          {/*<h3>Filter contacts</h3>*/}
           <h2>Add new contact</h2>
           <Form
             addName={addName}
@@ -228,6 +221,8 @@ const App = () => {
             newNumber={newNumber}
             handleNumberChange={handleNumberChange}
           />
+          <Notification message={notificationMessage} />
+          <Error message={errorMessage} />
         </div>
       </div>
     </div>
