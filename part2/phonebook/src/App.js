@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import personService from "./services/persons";
 import "./index.css";
+import { FaUserCircle, FaTrashAlt } from "react-icons/fa";
+import { IconContext } from "react-icons";
 
 const Notification = ({ message }) => {
   if (message === null) {
@@ -21,7 +23,7 @@ const Error = ({ message }) => {
 const Filter = ({ newFilter, handleFilter }) => {
   return (
     <div className="filter">
-      Name: <input value={newFilter} onChange={handleFilter} />
+      Search <input value={newFilter} onChange={handleFilter} />
     </div>
   );
 };
@@ -35,15 +37,15 @@ const Form = ({
 }) => {
   return (
     <form onSubmit={addName} className="form">
-      <div className="name">
+      <div className="form-name">
         Name: <input value={newName} onChange={handleNameChange} />
       </div>
-      <div className="number">
+      <div className="form-number">
         Number: <input value={newNumber} onChange={handleNumberChange} />
       </div>
-      <div>
-        <button type="submit">add</button>
-      </div>
+      <button className="button-add" type="submit">
+        add
+      </button>
     </form>
   );
 };
@@ -52,17 +54,28 @@ const Person = ({ person, handleDelete }) => {
   return (
     <div>
       {
-        <p className="person">
-          <div>
-            {person.name}
+        <div className="person-container">
+          <div className="person">
+            <IconContext.Provider value={{ size: "3em" }}>
+              <div className="person-avatar">
+                <FaUserCircle />
+              </div>
+            </IconContext.Provider>
+            <div className="person-info">
+              <div>{person.name}</div>
+              <div>{person.number} </div>
+            </div>
           </div>
-          <div>
-            {person.number}{" "}
-          </div>
-          <button onClick={() => handleDelete(person)} name={person.name}>
-            delete
+
+          <button
+            className="button-delete"
+            onClick={() => handleDelete(person)}
+            name={person.name}
+          >
+            <FaTrashAlt />
+            {/*delete*/}
           </button>
-        </p>
+        </div>
       }
     </div>
   );
@@ -191,29 +204,31 @@ const App = () => {
   };
 
   return (
-    <div className="container">
-      {/*<h2>Phonebook</h2>*/}
+    <div>
       <Notification message={notificationMessage} />
       <Error message={errorMessage} />
-      <div className="contacts">
-        <h2>Contacts</h2>
-        <Persons
+      <div className="container">
+        {/*<h2>Phonebook</h2>*/}
+        <div className="contacts">
+          <h2>Contacts</h2>
+          <Filter newFilter={newFilter} handleFilter={handleFilter} />
+          <Persons
             persons={persons}
             newFilter={newFilter}
             handleDelete={handleDelete}
-        />
-      </div>
-      <div className="right-sidebar">
-        <h3>Filter contacts</h3>
-        <Filter newFilter={newFilter} handleFilter={handleFilter} />
-        <h3>Add new contact</h3>
-        <Form
+          />
+        </div>
+        <div className="add-contact">
+          {/*<h3>Filter contacts</h3>*/}
+          <h2>Add new contact</h2>
+          <Form
             addName={addName}
             newName={newName}
             handleNameChange={handleNameChange}
             newNumber={newNumber}
             handleNumberChange={handleNumberChange}
-        />
+          />
+        </div>
       </div>
     </div>
   );

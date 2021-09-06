@@ -1,29 +1,89 @@
 * {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .container {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
-.filter, .form, .name, .number {
+.filter,
+.form,
+.form-name,
+.form-number {
   display: flex;
   flex-direction: column;
-  max-width: 200px;
+  /*max-width: 200px;*/
 }
 
-.contacts, .right-sidebar {
+.filter {
+  padding: 5px 0;
+}
+
+.form-name,
+.form-number {
+  padding: 5px 0;
+}
+
+.button-add {
+  margin: 5px 0;
+}
+
+.contacts,
+.add-contact {
   display: flex;
   flex-direction: column;
+  padding: 0 20px;
+}
+
+.person-container {
+  display: flex;
+  flex-direction: row;
+  padding: 15px 0;
+  margin: 0;
+  justify-content: space-between;
 }
 
 .person {
   display: flex;
+  flex-direction: row;
+  /*justify-content: space-between;*/
+}
+
+.person-avatar {
+  padding: 5px;
+}
+
+.person-info {
+  display: flex;
   flex-direction: column;
-  padding: 10px 20px;
+  padding: 10px 5px;
+  justify-content: space-around;
+  max-width: 180px;
+}
+
+.button-delete {
+  /*border-radius: 50%;*/
+  appearance: none;
   margin: 0;
+  padding: 0;
+  border-style: none;
+  background-color: transparent;
+}
+
+.button-delete:active {
+  transform: scale(0.9);
+}
+
+.button-delete svg {
+  width: 20px;
+  height: 20px;
+  fill: #9d0208;
+}
+
+.button-delete:hover {
+  cursor: pointer;
 }
 
 .notification {
@@ -33,7 +93,7 @@
   border-style: solid;
   border-radius: 2px;
   padding: 10px;
-  margin-bottom: 10px;
+  /*margin-bottom: 10px;*/
 }
 
 .error {
