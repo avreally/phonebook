@@ -1,19 +1,115 @@
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.filter,
+.form,
+.form-name,
+.form-number {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  max-width: 210px;
+}
+
+.filter,
+.form-name,
+.form-number,
+.person-avatar {
+  padding: 5px 0;
+}
+
+.person-avatar svg {
+  width: 48px;
+  height: 48px;
+  fill: #ccc;
+}
+
+.button-add {
+  margin: 5px 0;
+}
+
+.button-add:hover {
+  cursor: pointer;
+}
+
+.contacts,
+.add-contact {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.contacts {
+  max-width: 250px;
+}
+
+.person-container {
+  display: flex;
+  flex-direction: row;
+  padding: 5px 0;
+  justify-content: space-between;
+}
+
+.person {
+  display: flex;
+  flex-direction: row;
+}
+
+.person-info {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: space-around;
+  width: 160px;
+}
+
+.button-delete {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border-style: none;
+  background-color: transparent;
+}
+
+.button-delete:active {
+  transform: scale(0.9);
+}
+
+.button-delete svg {
+  width: 20px;
+  height: 20px;
+  fill: #9d0208;
+}
+
+.button-delete:hover {
+  cursor: pointer;
+}
+
 .notification {
   color: darkgreen;
   background: rgb(158, 224, 199);
-  font-size: 18px;
-  border-style: solid;
-  border-radius: 2px;
+  border: 1px solid;
+  border-radius: 3px;
   padding: 10px;
-  margin-bottom: 10px;
+  margin-top: 5px;
+  max-width: 188px;
 }
 
 .error {
   color: darkred;
   background: rgb(221, 159, 159);
-  font-size: 18px;
-  border-style: solid;
-  border-radius: 2px;
+  border: 1px solid;
+  border-radius: 3px;
   padding: 10px;
-  margin-bottom: 10px;
+  margin-top: 5px;
+  max-width: 188px;
 }
