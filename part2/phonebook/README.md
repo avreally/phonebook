@@ -20,7 +20,7 @@ Runs the json-server, which stores all the data in the db.json file.
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-#Technology Stack
+# Technology Stack
 
 - React.js
 - JavaScript
