@@ -201,7 +201,8 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="wrapper">
+      <h1>Phonebook</h1>
       <div className="container">
         <div className="contacts">
           <h2>Contacts</h2>
