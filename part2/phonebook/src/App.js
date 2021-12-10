@@ -23,7 +23,8 @@ const Error = ({ message }) => {
 const Filter = ({ newFilter, handleFilter }) => {
   return (
     <div className="filter">
-      Search <input value={newFilter} onChange={handleFilter} />
+      Search:{" "}
+      <input className="inputField" value={newFilter} onChange={handleFilter} />
     </div>
   );
 };
@@ -38,13 +39,23 @@ const Form = ({
   return (
     <form onSubmit={addName} className="form">
       <div className="form-name">
-        Name: <input value={newName} onChange={handleNameChange} />
+        Name:{" "}
+        <input
+          className="inputField"
+          value={newName}
+          onChange={handleNameChange}
+        />
       </div>
       <div className="form-number">
-        Number: <input value={newNumber} onChange={handleNumberChange} />
+        Number:{" "}
+        <input
+          className="inputField"
+          value={newNumber}
+          onChange={handleNumberChange}
+        />
       </div>
       <button className="button-add" type="submit">
-        add
+        Add contact
       </button>
     </form>
   );
@@ -201,7 +212,8 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="wrapper">
+      <h1>Phonebook</h1>
       <div className="container">
         <div className="contacts">
           <h2>Contacts</h2>
