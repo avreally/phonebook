@@ -32,7 +32,6 @@ body {
 .wrapper {
   display: flex;
   flex-direction: column;
-  /*justify-content: center;*/
   align-items: center;
   padding: 32px 0;
   overflow: auto;
@@ -50,7 +49,6 @@ h1 {
   gap: 8px;
   background-color: #fcfcfc;
   padding: 8px;
-  /*border: 5px solid #fcfcfc;*/
   border-radius: 16px;
 }
 
@@ -71,24 +69,16 @@ h2 {
 }
 
 .inputField {
+  height: 36px;
   padding: 8px;
-  border-radius: 4px;
   margin: 4px 0 16px 0;
   border: 2px solid #7b91b7;
+  border-radius: 4px;
 }
 
 .inputField:focus {
-  /*outline: 2px solid #7b91b7;*/
   box-shadow: 0 0 3pt 2pt #7b91b7;
   outline: none;
-}
-
-/*.inputField:focus:not(:focus-visible) {*/
-/*  outline: 2px solid #e32ada;*/
-/*}*/
-
-.form {
-  /*max-width: 210px;*/
 }
 
 .filter,
@@ -103,7 +93,6 @@ h2 {
 .person-avatar svg {
   width: 48px;
   height: 48px;
-  /*fill: #ccc;*/
   fill: #496087;
 }
 
@@ -123,7 +112,6 @@ h2 {
 }
 
 .button-add:focus {
-  /*outline: 2px solid #e4e9f1;*/
   box-shadow: 0 0 3pt 2pt #fcfcfc;
   outline: none;
 }
@@ -138,17 +126,9 @@ h2 {
   border-radius: 8px;
 }
 
-/*.contacts {*/
-/*max-width: 300px;*/
-/*width: 300px;*/
-
-/*border-right: 5px solid #fcfcfc;*/
-/*}*/
-
 .person-container {
   display: flex;
   flex-direction: row;
-  /*padding: 5px 10px;*/
   margin-top: 16px;
   justify-content: space-between;
   background-color: #e4e9f1;
@@ -183,7 +163,6 @@ h2 {
 .button-delete svg {
   width: 20px;
   height: 20px;
-  /*fill: #9d0208;*/
   fill: #882e33;
 }
 
