@@ -1,4 +1,5 @@
 import { FaTrashAlt, FaUserCircle } from "react-icons/fa";
+import { Button } from "../../components";
 import "./Person.css";
 
 const Person = ({ person, handleDelete }) => {
@@ -15,14 +16,11 @@ const Person = ({ person, handleDelete }) => {
               <div>{person.number} </div>
             </div>
           </div>
-
-          <button
+          <Button
             className="button-delete"
             onClick={() => handleDelete(person)}
-            name={person.name}
-          >
-            <FaTrashAlt />
-          </button>
+            value={<FaTrashAlt />}
+          />
         </div>
       }
     </div>

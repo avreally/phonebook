@@ -1,3 +1,4 @@
+import { Button, Input } from "../../components";
 import "./Form.css";
 
 const Form = ({
@@ -11,7 +12,7 @@ const Form = ({
     <form onSubmit={addName} className="form">
       <div className="form-name">
         Name:{" "}
-        <input
+        <Input
           className="inputField"
           value={newName}
           onChange={handleNameChange}
@@ -19,15 +20,13 @@ const Form = ({
       </div>
       <div className="form-number">
         Number:{" "}
-        <input
+        <Input
           className="inputField"
           value={newNumber}
           onChange={handleNumberChange}
         />
       </div>
-      <button className="button-add" type="submit">
-        Add contact
-      </button>
+      <Button className="button-add" type="submit" value="Add contact" />
     </form>
   );
 };

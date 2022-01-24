@@ -11,7 +11,7 @@ Install dependencies:
 
 In the project directory, run the json-server:
 
-`npx json-server --port 3001 --watch db.json`
+`npm run server`
 
 Runs the json-server, which stores all the data in the db.json file.
 

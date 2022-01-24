@@ -1,0 +1,41 @@
+.button-delete {
+  appearance: none;
+  margin: 0;
+  padding: 8px;
+  border-style: none;
+  background-color: transparent;
+}
+
+.button-delete:active {
+  transform: scale(0.9);
+}
+
+.button-delete svg {
+  width: 20px;
+  height: 20px;
+  fill: #882e33;
+}
+
+.button-delete:hover {
+  cursor: pointer;
+}
+
+.button-add {
+  margin: 0;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #496087;
+  color: #fcfcfc;
+}
+
+.button-add:hover {
+  cursor: pointer;
+  background-color: #3b4d6d;
+}
+
+.button-add:focus {
+  box-shadow: 0 0 3pt 2pt #fcfcfc;
+  outline: none;
+}

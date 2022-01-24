@@ -29,25 +29,3 @@
   height: 48px;
   fill: #496087;
 }
-
-.button-delete {
-  appearance: none;
-  margin: 0;
-  padding: 8px;
-  border-style: none;
-  background-color: transparent;
-}
-
-.button-delete:active {
-  transform: scale(0.9);
-}
-
-.button-delete svg {
-  width: 20px;
-  height: 20px;
-  fill: #882e33;
-}
-
-.button-delete:hover {
-  cursor: pointer;
-}
