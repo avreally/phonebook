@@ -5,7 +5,12 @@ const Filter = ({ newFilter, handleFilter }) => {
   return (
     <div className="filter">
       Search:{" "}
-      <Input className="inputField" value={newFilter} onChange={handleFilter} />
+      <Input
+        className="input-field"
+        value={newFilter}
+        onChange={handleFilter}
+        type="search"
+      />
     </div>
   );
 };

@@ -9,16 +9,3 @@
   display: flex;
   flex-direction: column;
 }
-
-.inputField {
-  height: 36px;
-  padding: 8px;
-  margin: 4px 0 16px 0;
-  border: 2px solid #7b91b7;
-  border-radius: 4px;
-}
-
-.inputField:focus {
-  box-shadow: 0 0 3pt 2pt #7b91b7;
-  outline: none;
-}

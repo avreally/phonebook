@@ -1,7 +1,7 @@
 import "./Error.css";
 
 const Error = ({ message }) => {
-  if (message === null) {
+  if (!message) {
     return null;
   }
 

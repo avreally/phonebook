@@ -61,7 +61,6 @@ const App = () => {
             clearForm();
           });
       } else {
-        console.log("the user cancelled changing number");
         clearForm();
       }
     } else {

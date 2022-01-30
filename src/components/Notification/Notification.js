@@ -1,7 +1,7 @@
 import "./Notification.css";
 
 const Notification = ({ message }) => {
-  if (message === null) {
+  if (!message) {
     return null;
   }
 

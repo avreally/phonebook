@@ -13,7 +13,7 @@ const Form = ({
       <div className="form-name">
         Name:{" "}
         <Input
-          className="inputField"
+          className="input-field"
           value={newName}
           onChange={handleNameChange}
         />
@@ -21,7 +21,7 @@ const Form = ({
       <div className="form-number">
         Number:{" "}
         <Input
-          className="inputField"
+          className="input-field"
           value={newNumber}
           onChange={handleNumberChange}
         />

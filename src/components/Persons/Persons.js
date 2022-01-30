@@ -1,9 +1,9 @@
 import { Person } from "../../components";
 
 const Persons = ({ persons, newFilter, handleDelete }) => {
-  const filterItems = (arr, query) => {
-    return arr.filter((el) =>
-      el.name.toLowerCase().includes(query.toLowerCase())
+  const filterItems = (items, query) => {
+    return items.filter((element) =>
+      element.name.toLowerCase().includes(query.toLowerCase())
     );
   };
   let resultPersons;
